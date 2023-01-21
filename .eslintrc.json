@@ -15,7 +15,8 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "airbnb-typescript/base",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:@ngrx/recommended"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -33,6 +34,12 @@
             "prefix": "app",
             "style": "kebab-case"
           }
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowTypedFunctionExpressions": false
+          }
         ]
       }
     },
@@ -48,7 +55,9 @@
       },
       "extends": ["plugin:jasmine/recommended"],
       "plugins": ["jasmine"],
-      "env": { "jasmine": true },
+      "env": {
+        "jasmine": true
+      },
       "rules": {}
     }
   ]
