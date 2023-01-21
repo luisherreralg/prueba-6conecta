@@ -37,4 +37,14 @@ describe('Check if the filters work correctly', (): void => {
 
     expect(cy.contains('charmander')).to.exist;
   });
+
+  it('Check if the order filter works correctly', (): void => {
+    cy.wait(2000);
+
+    cy.get("select[data-test-id='order-filter']")
+      .select('desc')
+      .should('have.value', 'desc');
+
+    expect(cy.get('td[class="pokemon-name"]').contains('misdreavus')).to.exist;
+  });
 });
