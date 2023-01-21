@@ -1,7 +1,11 @@
 <div>
   <div>
     <form [formGroup]="form">
-      <select formControlName="type" (change)="onChange($event)">
+      <select
+        data-test-id="type-filter"
+        formControlName="type"
+        (change)="onChange($event)"
+      >
         <option value="all" [defaultSelected]="true">Tipos</option>
         <option value="grass">Planta</option>
         <option value="fire">Fuego</option>
@@ -22,7 +26,11 @@
         <option value="flying">Volador</option>
       </select>
 
-      <select formControlName="order" (change)="onChange($event)">
+      <select
+        data-test-id="order-filter"
+        formControlName="order"
+        (change)="onChange($event)"
+      >
         <option value="asc" [defaultSelected]="true">Ascendente</option>
         <option value="desc">Descendente</option>
       </select>
