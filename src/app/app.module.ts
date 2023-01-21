@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './header/header.module';
+import { PokemonTableModule } from './pokemon-table/pokemon-table.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { HeaderModule } from './header/header.module';
     StoreModule.forRoot({}, {}),
     HttpClientModule,
     HeaderModule,
+    PokemonTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
