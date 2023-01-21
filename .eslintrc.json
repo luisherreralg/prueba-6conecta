@@ -59,6 +59,17 @@
         "jasmine": true
       },
       "rules": {}
+    },
+    {
+      "files": ["src/**/*.spec.cy.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.spec.json"
+      },
+      "plugins": ["cypress"],
+      "env": {
+        "cypress/globals": true
+      },
+      "rules": {}
     }
   ]
 }
