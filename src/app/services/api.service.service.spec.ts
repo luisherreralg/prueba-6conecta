@@ -29,7 +29,7 @@ describe('ApiServiceService', (): void => {
       service.getPokemonList();
 
       expect(spy).toHaveBeenCalledWith(
-        `${service.apiUrl}/pokemon?limit=100000&offset=0`
+        `${service.apiUrl}/pokemon?limit=200&offset=0`
       );
     });
   });

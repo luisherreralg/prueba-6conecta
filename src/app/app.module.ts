@@ -6,9 +6,11 @@ import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './header/header.module';
 import { PokemonTableModule } from './pokemon-table/pokemon-table.module';
+import { AddFormComponent } from './add-form/add-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AddFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -16,6 +18,7 @@ import { PokemonTableModule } from './pokemon-table/pokemon-table.module';
     HttpClientModule,
     HeaderModule,
     PokemonTableModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

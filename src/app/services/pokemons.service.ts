@@ -22,14 +22,14 @@ export class PokemonsService {
 
   addPokemon = (pokemon: Pokemon): void => {
     this.pokemons.push(pokemon);
-    this.pokemons$.next(this.pokemons);
+    this.orderPokemons();
   };
 
   getPokemons = (): Observable<Pokemon[]> => {
     return this.pokemons$.asObservable();
   };
 
-  orderPokemons = (order: string): void => {
+  orderPokemons = (order = 'asc'): void => {
     if (order === 'asc') {
       this.pokemons.sort((a, b): number => {
         if (a.id > b.id) {

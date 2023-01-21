@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AddFormComponent } from './add-form/add-form.component';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
 import { PokemonTableModule } from './pokemon-table/pokemon-table.module';
@@ -14,7 +15,8 @@ describe('AppComponent', (): void => {
         HeaderModule,
         PokemonTableModule,
       ],
-      declarations: [AppComponent],
+
+      declarations: [AppComponent, AddFormComponent],
     }).compileComponents();
   });
 
