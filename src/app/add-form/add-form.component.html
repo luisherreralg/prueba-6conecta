@@ -1,0 +1,28 @@
+<div *ngIf="!toggle" class="button-container">
+  <button (click)="toggleButton()">Añadir Pokemon</button>
+</div>
+
+<div *ngIf="toggle" class="form-container">
+  <h2>Añadir un pokemon:</h2>
+  <form [formGroup]="form">
+    <label>Id</label>
+    <input type="text" name="id" formControlName="id" />
+
+    <label>Name</label>
+    <input type="text" name="name" formControlName="name" />
+
+    <label>Image</label>
+    <input type="url" name="image" formControlName="image" />
+
+    <label>Height</label>
+    <input type="text" name="height" formControlName="height" />
+
+    <label>Weight</label>
+    <input type="text" name="weight" formControlName="weight" />
+
+    <div>
+      <button (click)="addPokemon()">Añadir</button>
+      <button class="close" (click)="toggleButton()">Cerrar</button>
+    </div>
+  </form>
+</div>
