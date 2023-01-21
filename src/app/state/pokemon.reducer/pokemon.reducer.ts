@@ -16,7 +16,7 @@ export const PokemonReducer = createReducer(
   on(
     actions.loadPokemon,
     (state, { pokemon }): State => ({
-      pokemons: [...pokemon],
+      pokemons: pokemon,
     })
   ),
 
