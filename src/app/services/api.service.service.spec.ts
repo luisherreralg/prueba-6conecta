@@ -28,7 +28,9 @@ describe('ApiServiceService', (): void => {
       const spy = spyOn(service.http, 'get').and.callThrough();
       service.getPokemonList();
 
-      expect(spy).toHaveBeenCalledWith(`${service.apiUrl}/pokemon`);
+      expect(spy).toHaveBeenCalledWith(
+        `${service.apiUrl}/pokemon?limit=100000&offset=0`
+      );
     });
   });
 
