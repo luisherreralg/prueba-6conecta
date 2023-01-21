@@ -2,12 +2,20 @@
   <tr>
     <th>Id</th>
     <th>Name</th>
+    <th>Image</th>
     <th>Height</th>
     <th>Weight</th>
   </tr>
   <tr *ngFor="let pokemon of pokemons" class="pokemon">
     <td class="pokemon-id">{{ pokemon.id }}</td>
     <td class="pokemon-name">{{ pokemon.name }}</td>
+    <td class="pokemon-image">
+      <img
+        *ngIf="pokemon.sprites.front_default"
+        [src]="pokemon.sprites.front_default"
+        [alt]="pokemon.name"
+      />
+    </td>
     <td class="pokemon-height">{{ pokemon.height }}</td>
     <td class="pokemon-wight">{{ pokemon.weight }}</td>
   </tr>
