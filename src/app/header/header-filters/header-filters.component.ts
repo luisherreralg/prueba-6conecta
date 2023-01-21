@@ -3,8 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { ApiServiceService } from 'src/app/services/api.service.service';
 import { PokemonsService } from 'src/app/services/pokemons.service';
-import { Pokemon } from 'src/app/utils/interfaces/PokemonByType';
-import { Generation } from 'src/app/utils/interfaces/PokemonByType';
+import { Pokemon, Generation } from 'src/app/utils/interfaces/PokemonByType';
 import { Result } from 'src/app/utils/interfaces/PokemonList';
 
 @Component({
@@ -53,7 +52,6 @@ export class HeaderFiltersComponent {
         });
       });
     });
-    return;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
