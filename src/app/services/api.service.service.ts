@@ -17,7 +17,9 @@ export class ApiServiceService {
   }
 
   getPokemonList = (): Observable<PokemonList> => {
-    return this.http.get<PokemonList>(`${this.apiUrl}/pokemon`);
+    return this.http.get<PokemonList>(
+      `${this.apiUrl}/pokemon?limit=100000&offset=0`
+    );
   };
 
   getTypesList = (): Observable<TypeList> => {

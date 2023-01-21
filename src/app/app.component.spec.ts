@@ -1,11 +1,19 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HeaderModule } from './header/header.module';
+import { PokemonTableModule } from './pokemon-table/pokemon-table.module';
 
 describe('AppComponent', (): void => {
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        HeaderModule,
+        PokemonTableModule,
+      ],
       declarations: [AppComponent],
     }).compileComponents();
   });
@@ -15,22 +23,5 @@ describe('AppComponent', (): void => {
     const app = fixture.componentInstance;
 
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'prueba-6conecta'`, (): void => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-
-    expect(app.title).toEqual('prueba-6conecta');
-  });
-
-  it('should render title', (): void => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'prueba-6conecta app is running!'
-    );
   });
 });
