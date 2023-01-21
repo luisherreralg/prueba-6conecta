@@ -17,26 +17,18 @@ export class ApiServiceService {
   }
 
   getPokemonList = (): Observable<PokemonList> => {
-    return this.http.get<PokemonList>(
-      `${this.apiUrl}/pokemon`
-    ) as Observable<PokemonList>;
+    return this.http.get<PokemonList>(`${this.apiUrl}/pokemon`);
   };
 
   getTypesList = (): Observable<TypeList> => {
-    return this.http.get<TypeList>(
-      `${this.apiUrl}/type`
-    ) as Observable<TypeList>;
+    return this.http.get<TypeList>(`${this.apiUrl}/type`);
   };
 
   getPokemonByTypeList = (type: string): Observable<PokemonByType> => {
-    return this.http.get<PokemonByType>(
-      `${this.apiUrl}/type/${type}`
-    ) as Observable<PokemonByType>;
+    return this.http.get<PokemonByType>(`${this.apiUrl}/type/${type}`);
   };
 
   getPokemon = (name: string): Observable<Pokemon> => {
-    return this.http.get<Pokemon>(
-      `${this.apiUrl}/pokemon/${name}`
-    ) as Observable<Pokemon>;
+    return this.http.get<Pokemon>(`${this.apiUrl}/pokemon/${name}`);
   };
 }
