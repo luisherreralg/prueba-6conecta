@@ -1,0 +1,31 @@
+name: SonarCloud Analysis
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read
+
+jobs:
+  SonarCloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install modules
+        run: npm ci
+      - name: Testing coverage
+        run: npm run test:sonar
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          args: -Dsonar.projectKey=luisherreralg_prueba-6conecta
+            -Dsonar.organization=luisherreralg
