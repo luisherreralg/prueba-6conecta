@@ -1,49 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable, tap } from 'rxjs';
 import { ApiServiceService } from '../services/api.service.service';
 import { PokemonsService } from '../services/pokemons.service';
 import { Pokemon } from '../utils/interfaces/Pokemon';
-import { Result } from '../utils/interfaces/TypeList';
 
 @Component({
   selector: 'app-pokemon-table',
   templateUrl: './pokemon-table.component.html',
   styleUrls: ['./pokemon-table.component.sass'],
 })
-export class PokemonTableComponent implements OnInit {
-  pokeUrls: Result[] = [];
+export class PokemonTableComponent {
+  pokemonList$;
 
-  pokeUrls$: Subject<Result[]>;
-
-  pokemons: Pokemon[] = [];
+  pokemons$: Observable<Pokemon[]>;
 
   constructor(
     public apiService: ApiServiceService,
     public pokemonService: PokemonsService
   ) {
-    this.pokeUrls$ = new Subject();
-  }
+    this.pokemons$ = this.pokemonService.getPokemons();
 
-  ngOnInit(): void {
-    this.pokemonService.getPokemons().subscribe((data): void => {
-      this.pokemons = data;
-    });
-
-    this.apiService.getPokemonList().subscribe((data): void => {
-      this.pokeUrls = data.results;
-      this.pokeUrls$.next(this.pokeUrls);
-    });
-
-    this.pokeUrls$.subscribe((data): void => {
-      data.forEach((url): void => {
-        this.apiService.getPokemon(url.name).subscribe((pokemon): void => {
-          this.pokemonService.addPokemon(pokemon);
-        });
-      });
-    });
-
-    this.pokemons.sort((a, b): number => {
-      return a.id - b.id;
-    });
+    this.pokemonList$ = this.apiService
+      .getPokemonList()
+      .pipe(
+        tap((data): void => {
+          data.results.map((pokemon): void => {
+            this.apiService
+              .getPokemon(pokemon.name)
+              .subscribe((fetchedPokemon): void => {
+                this.pokemonService.addPokemon(fetchedPokemon);
+              });
+          });
+        })
+      )
+      .subscribe();
   }
 }
